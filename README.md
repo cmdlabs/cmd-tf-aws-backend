@@ -22,12 +22,3 @@ It is also expected that you check the statefile for this module into git to avo
 | bucket\_region | The region to create the S3 bucket in | string | n/a | yes |
 | bucket\_sse\_algorithm | Encryption algorithm to use on the S3 bucket. Currently only AES256 is supported | string | `"AES256"` | no |
 | workspaces | A list of terraform workspaces that IAM Roles/Policy will be created for | list | n/a | yes |
-
-## Contributing
-This module uses the [3 Musketeers](https://3musketeers.io/) pattern. This bundles all required build tooling in a docker image only requiring the following tools locally:
-- Docker
-- Docker Compose
-- Make
-
-The following image is used;
-[docker-terraform-utils](https://hub.docker.com/r/deanillfeld/docker-terraform-utils)
