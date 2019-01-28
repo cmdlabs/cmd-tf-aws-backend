@@ -1,0 +1,7 @@
+version: "3.7"
+services:
+  terraform-utils:
+    image: deanillfeld/terraform-utils:latest
+    volumes:
+      - ~/Code:/code
+      - ~/.aws:/root/.aws
