@@ -3,5 +3,6 @@ services:
   terraform-utils:
     image: deanillfeld/terraform-utils:latest
     volumes:
-      - ~/Code:/code
+      - .:/code
       - ~/.aws:/root/.aws
+      - ~/.ssh:/root/.ssh
