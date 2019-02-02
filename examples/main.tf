@@ -10,5 +10,3 @@ module "tf-backend" {
 
   assume_policy = {}
 }
-
-  
