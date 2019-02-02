@@ -7,4 +7,8 @@ module "tf-backend" {
   bucket_sse_algorithm = "AES256"
 
   workspaces = ["prod", "nonprod", "sandpit"]
+
+  assume_policy = {}
 }
+
+  
