@@ -1,5 +1,5 @@
 output "state_bucket_arn" {
-  value = "${aws_s3_bucket.backend.arn}"
+  value = "${aws_s3_bucket.backend.id}"
 }
 
 output "dynamo_lock_table" {

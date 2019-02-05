@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "backend" {
-  bucket = "${var.bucket_prefix}-terraform-backend"
+  bucket = "${var.resource_prefix}-terraform-backend"
   region = "${var.bucket_region}"
   acl    = "private"
 
@@ -26,7 +26,7 @@ resource "aws_s3_bucket_public_access_block" "backend" {
 }
 
 resource "aws_dynamodb_table" "lock" {
-  name           = "terraform-lock"
+  name           = "${var.resource_prefix}-terraform-lock"
   read_capacity  = 1
   write_capacity = 1
   hash_key       = "LockID"
