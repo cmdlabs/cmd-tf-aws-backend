@@ -7,7 +7,7 @@ data "aws_iam_policy_document" "iam-role-policy-restricted" {
   }
 
   statement {
-    actions   = ["s3:GetObject", "s3:PutObject"]
+    actions   = ["s3:GetObject", "s3:PutObject", "s3:DeleteObject"]
     resources = ["arn:aws:s3:::${aws_s3_bucket.backend.id}/env:/${element(var.workspace_prefixes, count.index)}*"]
   }
 
@@ -24,7 +24,7 @@ data "aws_iam_policy_document" "iam-role-policy" {
   }
 
   statement {
-    actions   = ["s3:GetObject", "s3:PutObject"]
+    actions   = ["s3:GetObject", "s3:PutObject", "s3:DeleteObject"]
     resources = ["arn:aws:s3:::${aws_s3_bucket.backend.id}/*"]
   }
 
