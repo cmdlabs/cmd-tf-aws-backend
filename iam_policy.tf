@@ -40,20 +40,34 @@ data "aws_iam_policy_document" "backend-assume-role-all" {
 
     principals {
       type        = "AWS"
-      identifiers = split(",", lookup(var.assume_policy, "all", data.aws_caller_identity.current.account_id))
+      identifiers = split(
+        ",",
+        lookup(
+          var.assume_policy,
+          "all",
+          data.aws_caller_identity.current.account_id,
+        ),
+      )
     }
   }
 }
 
 data "aws_iam_policy_document" "backend-assume-role-restricted" {
-  count = "${length(var.workspace_prefixes)}"
+  count = length(var.workspace_prefixes)
 
   statement {
     actions = ["sts:AssumeRole"]
 
     principals {
       type        = "AWS"
-      identifiers = split(",", lookup(var.assume_policy, "${element(var.workspace_prefixes, count.index)}", data.aws_caller_identity.current.account_id))
+      identifiers = split(
+        ",",
+        lookup(
+          var.assume_policy,
+          element(var.workspace_prefixes, count.index),
+          data.aws_caller_identity.current.account_id,
+        ),
+      )
     }
   }
 }
