@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Breaking
 - Updated code to terraform 0.12.0
 
+### Fixed
+- Added IAM permissions to allow deletion of workspaces. Fixes #2
+
 ## [0.2.0] - 2019-02-09
 ### Changed
 - All resources are now prefixed allowing multiple backends to be deployed into the same account
