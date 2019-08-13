@@ -30,7 +30,7 @@ data "aws_iam_policy_document" "iam-role-policy" {
 
   statement {
     actions   = ["dynamodb:GetItem", "dynamodb:PutItem", "dynamodb:DeleteItem"]
-    resources = ["arn:aws:dynamodb:*:*:table/terraform-lock"]
+    resources = ["arn:aws:dynamodb:*:*:table/${var.resource_prefix}-terraform-lock"]
   }
 }
 
