@@ -1,0 +1,85 @@
+envvars:
+  - name: AWS_ACCESS_KEY_ID
+    desc: AWS Authentication Access Key ID
+    optional: true
+    tags:
+      - aws
+
+  - name: AWS_SECRET_ACCESS_KEY
+    desc: AWS Authentication Secret Access Key
+    optional: true
+    tags:
+      - aws
+
+  - name: AWS_SESSION_TOKEN
+    desc: AWS Authentication Session Token
+    optional: true
+    tags:
+      - aws
+
+  - name: AWS_PROFILE
+    desc: AWS profile to use for assuming role
+    optional: true
+    tags:
+      - aws
+
+  - name: AWS_DEFAULT_REGION
+    desc: AWS Region
+    optional: true
+    tags:
+      - aws
+
+  - name: AWS_ROLE_NAME
+    desc: Role name to assume
+    tags:
+      - profile
+
+  - name: AWS_ACCOUNT_ID
+    desc: Account ID of the role to assume
+    tags:
+      - profile
+
+  - name: AWS_PROFILE_NAME
+    desc: Full name of the AWS profile to set up
+    tags:
+      - profile
+
+  - name: CI_PROJECT_NAME
+    desc: Gitlab project name
+    tags:
+      - publish
+
+  - name: CI_COMMIT_REF_NAME
+    desc: Gitlab branch or tag being run
+    tags:
+      - publish
+
+  - name: CI_COMMIT_SHA
+    desc: Gitlab commit sha
+    tags:
+      - publish
+
+  - name: GIT_USERNAME
+    desc: Github username
+    tags:
+      - publish
+
+  - name: GIT_PASSWORD
+    desc: Github Personal Access Token
+    tags:
+      - publish
+
+  - name: GIT_PUBLISHING_WEBHOOK
+    desc: Slack webhook for notifications
+    tags:
+      - publish
+
+tags:
+  - name: aws
+    desc: AWS authentication envvars
+
+  - name: profile
+    desc: 'Configure ~/.aws/config with a profile'
+
+  - name: publish
+    desc: Github publishing envvars

@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.0] - 2020-02-17
+### Added
+- Tests
+- Optional KMS encryption for S3
+- Optional unencrypted upload prevention
+
+### Changed
+- Renamed files and rearranged resources within and between files
+- Renamed resouce names to use underscores instead of dashes
+- Updated the Makefile to plan tests
+- Docker-compose now using latest CMD image
+- Combined `workspace_prefixes` and `assume_policy` into single variable and adjusted loops and lookups where needed
+
 ## [0.4.0] - 2019-08-13
 ### Fixed
 - Fixed IAM permission to dynamoDB table (added expected prefix)
