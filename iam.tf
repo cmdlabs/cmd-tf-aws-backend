@@ -3,6 +3,7 @@ resource "aws_iam_role" "backend_all" {
   name               = "${var.resource_prefix}-terraform-backend"
   description        = "Allows access to all Terraform workspaces"
   assume_role_policy = data.aws_iam_policy_document.backend_assume_role_all.json
+  tags               = var.tags
 }
 
 resource "aws_iam_role_policy" "backend_all" {
@@ -20,6 +21,7 @@ resource "aws_iam_role" "backend_restricted" {
   name               = "${var.resource_prefix}-terraform-backend-${each.key}"
   description        = "Allows access to the ${each.key} workspace prefix"
   assume_role_policy = data.aws_iam_policy_document.backend_assume_role_restricted["${each.key}"].json
+  tags               = var.tags
 }
 
 resource "aws_iam_role_policy" "backend_restricted" {
