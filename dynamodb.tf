@@ -13,4 +13,6 @@ resource "aws_dynamodb_table" "lock" {
     enabled     = true
     kms_key_arn = var.enable_customer_kms_key ? aws_kms_key.backend[0].arn : null
   }
+
+  tags = var.tags
 }

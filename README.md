@@ -66,6 +66,14 @@ Type: `bool`
 
 Default: `false`
 
+### tags
+
+Description: Tags applied to all resources
+
+Type: `map(string)`
+
+Default: `{}`
+
 ## Outputs
 
 The following outputs are exported:

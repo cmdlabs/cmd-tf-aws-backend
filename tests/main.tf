@@ -10,6 +10,11 @@ module "tf-backend1" {
     "nonprod" = []
     "sandpit" = []
   }
+
+  tags = {
+    Owner      = "Foo"
+    Department = "Bar"
+  }
 }
 
 # all default with unencrypted upload protection
@@ -42,6 +47,11 @@ module "tf-backend3" {
     "nonprod" = []
     "sandpit" = []
   }
+
+  tags = {
+    Owner      = "Foo"
+    Department = "Bar"
+  }
 }
 
 # with arns on workspaces
@@ -57,5 +67,10 @@ module "tf-backend4" {
     "prod"    = ["arn:aws:iam::471871437096:role/gitlab_runner", "arn:aws:iam::471871437096:root"]
     "nonprod" = ["arn:aws:iam::471871437096:role/gitlab_runner", "arn:aws:iam::471871437096:root"]
     "sandpit" = ["arn:aws:iam::471871437096:role/gitlab_runner", "arn:aws:iam::471871437096:root"]
+  }
+
+  tags = {
+    Owner      = "Foo"
+    Department = "Bar"
   }
 }

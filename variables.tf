@@ -24,3 +24,9 @@ variable "enable_customer_kms_key" {
   description = "Create a customer CMK rather than AWS managed CMK"
   default     = false
 }
+
+variable "tags" {
+  type        = map(string)
+  description = "Tags applied to all resources"
+  default     = {}
+}
