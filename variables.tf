@@ -1,27 +1,26 @@
 variable "resource_prefix" {
-  type        = "string"
+  type        = string
   description = "A prefix applied to all resources to allow multiple instances of this module to be deployed in the same master account"
 }
 
 variable "bucket_region" {
-  type        = "string"
+  type        = string
   description = "The region to create the S3 bucket in"
 }
 
-variable "bucket_sse_algorithm" {
-  type        = "string"
-  description = "Encryption algorithm to use on the S3 bucket. Currently only AES256 is supported"
-  default     = "AES256"
+variable "workspace_details" {
+  type        = map(list(string))
+  description = "A map of lists with the format of 'workspace': ['aws principle', ...]. These workspaces will have IAM Roles created to allow access to specific paths in the S3 state bucket along with additional AWS principles that will be added to the backend roles assume role policy"
 }
 
-variable "workspace_prefixes" {
-  type        = "list"
-  description = "A list of prefixes that will have IAM Roles created to allow access to specific paths in the S3 state bucket"
+variable "prevent_unencrypted_uploads" {
+  type        = bool
+  description = "Attach a bucket policy that requires all uploaded files to be explicitly encrypted. Must set the encrypted flag on the backend config."
+  default     = false
 }
 
-variable "assume_policy" {
-  type        = "map"
-  description = "A map that allows you to specify additional AWS principles that will be added to the backend roles assume role policy"
-  
-  default = {}
+variable "enable_customer_kms_key" {
+  type        = bool
+  description = "Create a customer CMK rather than AWS managed CMK"
+  default     = false
 }

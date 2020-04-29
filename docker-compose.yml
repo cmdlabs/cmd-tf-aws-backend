@@ -1,9 +1,30 @@
 version: "3.7"
 services:
   terraform-utils:
-    image: deanillfeld/docker-terraform-utils:0.1
+    image: cmdlabs/terraform-utils:6.2.0
+    env_file: .env
+    entrypoint: ""
+    environment:
+      - AWS_SDK_LOAD_CONFIG=1
     volumes:
-      - .:/code
+      - .:/work
       - ~/.aws:/root/.aws
       - ~/.ssh:/root/.ssh
-    working_dir: /code
+    working_dir: /work
+
+  envvars:
+    image: flemay/envvars:0.0.6
+    env_file: .env
+    working_dir: /work
+    volumes:
+      - .:/work
+
+  aws:
+    image: cmdlabs/aws-utils:1.0.2
+    env_file: .env
+    entrypoint: []
+    volumes:
+      - .:/work
+      - ~/.aws:/root/.aws
+      - ~/.ssh:/root/.ssh
+    working_dir: /work

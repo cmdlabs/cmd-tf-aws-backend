@@ -1,0 +1,51 @@
+stages:
+  - format
+  - plan
+  - apply
+  - destroy
+  - publish
+
+variables:
+  AWS_ROLE_NAME: gitlab_runner
+  AWS_ACCOUNT_ID: 471871437096
+  AWS_PROFILE_NAME: cmdlabtf-master
+
+format:
+  stage: format
+  tags:
+    - cmd
+  script:
+    - make formatCheck
+
+plan:
+  stage: plan
+  tags:
+    - cmd
+  script:
+    - make plan
+
+apply:
+  stage: apply
+  tags:
+    - cmd
+  script:
+    - make apply
+
+destroy:
+  stage: destroy
+  tags:
+    - cmd
+  script:
+    - make destroy
+
+publish:
+  stage: publish
+  tags:
+    - cmd
+  script:
+    - make publish
+  variables:
+    GIT_STRATEGY: clone
+  only:
+    - master
+    - tags
