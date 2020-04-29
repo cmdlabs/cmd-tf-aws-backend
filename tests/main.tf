@@ -63,6 +63,8 @@ module "tf-backend4" {
 
   enable_customer_kms_key = true
 
+  all_workspaces_details = ["arn:aws:iam::471871437096:role/gitlab_runner", "arn:aws:iam::471871437096:root"]
+
   workspace_details = {
     "prod"    = ["arn:aws:iam::471871437096:role/gitlab_runner", "arn:aws:iam::471871437096:root"]
     "nonprod" = ["arn:aws:iam::471871437096:role/gitlab_runner", "arn:aws:iam::471871437096:root"]

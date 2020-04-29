@@ -3,6 +3,9 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+## [0.7.0] - 2020-04-29
+### Breaking
+- The `all` key in `workspace_details` has been removed. This functionality is now handled with its own variable `all_workspaces_details`
 
 ## [0.6.0] - 2020-04-29
 ### Added
