@@ -3,11 +3,8 @@ data "aws_iam_policy_document" "backend_assume_role_all" {
     actions = ["sts:AssumeRole"]
 
     principals {
-      type = "AWS"
-      identifiers = lookup(
-        var.workspace_details, "all",
-        list(data.aws_caller_identity.current.account_id)
-      )
+      type        = "AWS"
+      identifiers = length(var.all_workspaces_details) > 0 ? var.all_workspaces_details : list(data.aws_caller_identity.current.account_id)
     }
   }
 }

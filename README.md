@@ -50,6 +50,14 @@ Type: `map(list(string))`
 
 The following input variables are optional (have default values):
 
+### all\_workspaces\_details
+
+Description: A list of aws principles that will be allowed to assume the backend-all role
+
+Type: `list(string)`
+
+Default: `[]`
+
 ### enable\_customer\_kms\_key
 
 Description: Create a customer CMK rather than AWS managed CMK

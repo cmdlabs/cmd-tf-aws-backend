@@ -30,3 +30,9 @@ variable "tags" {
   description = "Tags applied to all resources"
   default     = {}
 }
+
+variable "all_workspaces_details" {
+  type        = list(string)
+  description = "A list of aws principles that will be allowed to assume the backend-all role"
+  default     = []
+}

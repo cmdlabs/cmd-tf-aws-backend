@@ -13,12 +13,8 @@
 *
 */
 
-locals {
-  bucket_name = "${var.resource_prefix}-terraform-backend"
-}
-
 resource "aws_s3_bucket" "backend" {
-  bucket = local.bucket_name
+  bucket = "${var.resource_prefix}-terraform-backend"
   region = var.bucket_region
   acl    = "private"
   policy = var.prevent_unencrypted_uploads ? data.aws_iam_policy_document.prevent_unencrypted_uploads.json : ""
@@ -61,7 +57,7 @@ data "aws_iam_policy_document" "prevent_unencrypted_uploads" {
       "s3:PutObject"
     ]
     resources = [
-      "arn:aws:s3:::${local.bucket_name}/*"
+      "arn:aws:s3:::${var.resource_prefix}-terraform-backend/*"
     ]
 
     condition {
@@ -86,7 +82,7 @@ data "aws_iam_policy_document" "prevent_unencrypted_uploads" {
       "s3:PutObject"
     ]
     resources = [
-      "arn:aws:s3:::${local.bucket_name}/*"
+      "arn:aws:s3:::${var.resource_prefix}-terraform-backend/*"
     ]
 
     condition {
