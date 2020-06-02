@@ -13,6 +13,12 @@ variable "workspace_details" {
   description = "A map of lists with the format of 'workspace': ['aws principle', ...]. These workspaces will have IAM Roles created to allow access to specific paths in the S3 state bucket along with additional AWS principles that will be added to the backend roles assume role policy"
 }
 
+variable "workspace_key_prefix" {
+  type        = string
+  description = "The prefix applied to the state path inside the bucket"
+  default     = "env:"
+}
+
 variable "prevent_unencrypted_uploads" {
   type        = bool
   description = "Attach a bucket policy that requires all uploaded files to be explicitly encrypted. Must set the encrypted flag on the backend config."
