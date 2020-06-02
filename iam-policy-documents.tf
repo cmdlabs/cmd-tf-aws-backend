@@ -1,3 +1,7 @@
+locals {
+  workspace_key_prefix = var.workspace_key_prefix != "" ? "${var.workspace_key_prefix}/" : ""
+}
+
 data "aws_iam_policy_document" "backend_assume_role_all" {
   statement {
     actions = ["sts:AssumeRole"]
@@ -49,7 +53,7 @@ data "aws_iam_policy_document" "iam_role_policy_restricted" {
 
   statement {
     actions   = ["s3:GetObject", "s3:PutObject", "s3:DeleteObject"]
-    resources = ["arn:aws:s3:::${aws_s3_bucket.backend.id}/env:/${each.key}*"]
+    resources = ["arn:aws:s3:::${aws_s3_bucket.backend.id}/${local.workspace_key_prefix}${each.key}*"]
   }
 
   statement {

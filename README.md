@@ -82,6 +82,14 @@ Type: `map(string)`
 
 Default: `{}`
 
+### workspace\_key\_prefix
+
+Description: The prefix applied to the state path inside the bucket
+
+Type: `string`
+
+Default: `"env:"`
+
 ## Outputs
 
 The following outputs are exported:
