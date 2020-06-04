@@ -15,7 +15,7 @@ data "aws_iam_policy_document" "backend_assume_role_all" {
 
 data "aws_iam_policy_document" "iam_role_policy_all" {
   statement {
-    actions   = ["s3:ListBucket"]
+    actions   = ["s3:GetBucketVersioning", "s3:ListBucket"]
     resources = ["arn:aws:s3:::${aws_s3_bucket.backend.id}"]
   }
 
@@ -25,7 +25,7 @@ data "aws_iam_policy_document" "iam_role_policy_all" {
   }
 
   statement {
-    actions   = ["dynamodb:GetItem", "dynamodb:PutItem", "dynamodb:DeleteItem"]
+    actions   = ["dynamodb:DescribeTable", "dynamodb:GetItem", "dynamodb:PutItem", "dynamodb:DeleteItem"]
     resources = ["arn:aws:dynamodb:*:*:table/${var.resource_prefix}-terraform-lock"]
   }
 }
@@ -47,7 +47,7 @@ data "aws_iam_policy_document" "iam_role_policy_restricted" {
   for_each = var.workspace_details
 
   statement {
-    actions   = ["s3:ListBucket"]
+    actions   = ["s3:GetBucketVersioning", "s3:ListBucket"]
     resources = ["arn:aws:s3:::${aws_s3_bucket.backend.id}"]
   }
 
@@ -57,7 +57,7 @@ data "aws_iam_policy_document" "iam_role_policy_restricted" {
   }
 
   statement {
-    actions   = ["dynamodb:GetItem", "dynamodb:PutItem", "dynamodb:DeleteItem"]
+    actions   = ["dynamodb:DescribeTable", "dynamodb:GetItem", "dynamodb:PutItem", "dynamodb:DeleteItem"]
     resources = ["arn:aws:dynamodb:*:*:table/${var.resource_prefix}-terraform-lock"]
   }
 }
