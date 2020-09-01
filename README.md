@@ -14,25 +14,13 @@ The policy by default will be set to the current account ID. This is primarily s
 
 The following requirements are needed by this module:
 
-- terraform (>= 0.12.6)
-
-- aws (>= 2.8.1)
-
-## Providers
-
-The following providers are used by this module:
+- terraform ( >= 0.12.26)
 
 - aws (>= 2.8.1)
 
 ## Required Inputs
 
 The following input variables are required:
-
-### bucket\_region
-
-Description: The region to create the S3 bucket in
-
-Type: `string`
 
 ### resource\_prefix
 

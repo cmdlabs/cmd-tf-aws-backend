@@ -1,9 +1,10 @@
+variable "resource_suffix" {}
+
 # all defaults
 module "tf-backend1" {
   source = "../"
 
-  resource_prefix = "backend-ci-test1"
-  bucket_region   = "ap-southeast-2"
+  resource_prefix = "backend-ci-test1-${var.resource_suffix}"
 
   workspace_details = {
     "prod"    = []
@@ -21,8 +22,7 @@ module "tf-backend1" {
 module "tf-backend2" {
   source = "../"
 
-  resource_prefix = "backend-ci-test2"
-  bucket_region   = "ap-southeast-2"
+  resource_prefix = "backend-ci-test2-${var.resource_suffix}"
 
   prevent_unencrypted_uploads = true
 
@@ -37,8 +37,7 @@ module "tf-backend2" {
 module "tf-backend3" {
   source = "../"
 
-  resource_prefix = "backend-ci-test3"
-  bucket_region   = "ap-southeast-2"
+  resource_prefix = "backend-ci-test3-${var.resource_suffix}"
 
   enable_customer_kms_key = true
 
@@ -58,8 +57,7 @@ module "tf-backend3" {
 module "tf-backend4" {
   source = "../"
 
-  resource_prefix = "backend-ci-test4"
-  bucket_region   = "ap-southeast-2"
+  resource_prefix = "backend-ci-test4-${var.resource_suffix}"
 
   enable_customer_kms_key = true
 

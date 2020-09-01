@@ -29,6 +29,12 @@ envvars:
     tags:
       - aws
 
+  - name: TF_VAR_resource_suffix
+    desc: Resource name suffix used when running tests
+    optional: true
+    tags:
+      - aws
+
   - name: AWS_ROLE_NAME
     desc: Role name to assume
     tags:
