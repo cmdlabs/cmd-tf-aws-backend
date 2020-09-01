@@ -17,26 +17,65 @@ format:
   script:
     - make formatCheck
 
-plan:
+plan-aws2:
   stage: plan
   tags:
     - cmd
   script:
     - make plan
+  variables:
+    TF_VAR_resource_suffix: aws2
+    SUBFOLDER: tests/${TF_VAR_resource_suffix}
 
-apply:
+plan-aws3:
+  stage: plan
+  tags:
+    - cmd
+  script:
+    - make plan
+  variables:
+    TF_VAR_resource_suffix: aws3
+    SUBFOLDER: tests/${TF_VAR_resource_suffix}
+
+apply-aws2:
   stage: apply
   tags:
     - cmd
   script:
     - make apply
+  variables:
+    TF_VAR_resource_suffix: aws2
+    SUBFOLDER: tests/${TF_VAR_resource_suffix}
 
-destroy:
+apply-aws3:
+  stage: apply
+  tags:
+    - cmd
+  script:
+    - make apply
+  variables:
+    TF_VAR_resource_suffix: aws3
+    SUBFOLDER: tests/${TF_VAR_resource_suffix}
+
+destroy-aws2:
   stage: destroy
   tags:
     - cmd
   script:
     - make destroy
+  variables:
+    TF_VAR_resource_suffix: aws2
+    SUBFOLDER: tests/${TF_VAR_resource_suffix}
+
+destroy-aws3:
+  stage: destroy
+  tags:
+    - cmd
+  script:
+    - make destroy
+  variables:
+    TF_VAR_resource_suffix: aws3
+    SUBFOLDER: tests/${TF_VAR_resource_suffix}
 
 publish:
   stage: publish

@@ -15,7 +15,6 @@
 
 resource "aws_s3_bucket" "backend" {
   bucket = "${var.resource_prefix}-terraform-backend"
-  region = var.bucket_region
   acl    = "private"
   policy = var.prevent_unencrypted_uploads ? data.aws_iam_policy_document.prevent_unencrypted_uploads.json : ""
 
@@ -90,6 +89,30 @@ data "aws_iam_policy_document" "prevent_unencrypted_uploads" {
       variable = "s3:x-amz-server-side-encryption"
       values = [
         "true"
+      ]
+    }
+  }
+
+  statement {
+    sid    = "AllowSSLRequestsOnly"
+    effect = "Deny"
+
+    principals {
+      identifiers = ["*"]
+      type        = "AWS"
+    }
+    actions = [
+      "s3:*"
+    ]
+    resources = [
+      "arn:aws:s3:::${var.resource_prefix}-terraform-backend/*"
+    ]
+
+    condition {
+      test     = "Bool"
+      variable = "aws:SecureTransport"
+      values = [
+        "false"
       ]
     }
   }

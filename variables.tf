@@ -3,11 +3,6 @@ variable "resource_prefix" {
   description = "A prefix applied to all resources to allow multiple instances of this module to be deployed in the same master account"
 }
 
-variable "bucket_region" {
-  type        = string
-  description = "The region to create the S3 bucket in"
-}
-
 variable "workspace_details" {
   type        = map(list(string))
   description = "A map of lists with the format of 'workspace': ['aws principle', ...]. These workspaces will have IAM Roles created to allow access to specific paths in the S3 state bucket along with additional AWS principles that will be added to the backend roles assume role policy"

@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   terraform-utils:
-    image: cmdlabs/terraform-utils:6.2.0
+    image: cmdlabs/terraform-utils:7.0.0
     env_file: .env
     entrypoint: ""
     environment:
@@ -10,7 +10,7 @@ services:
       - .:/work
       - ~/.aws:/root/.aws
       - ~/.ssh:/root/.ssh
-    working_dir: /work
+    working_dir: /work/${SUBFOLDER}
 
   envvars:
     image: flemay/envvars:0.0.6
