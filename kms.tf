@@ -1,8 +1,9 @@
 resource "aws_kms_key" "backend" {
-  count       = var.enable_customer_kms_key ? 1 : 0
-  description = "Customer key used to encrypt the backend S3 bucket"
-  policy      = data.aws_iam_policy_document.kms[0].json
-  tags        = var.tags
+  count               = var.enable_customer_kms_key ? 1 : 0
+  description         = "Customer key used to encrypt the backend S3 bucket"
+  enable_key_rotation = var.enable_key_rotation
+  policy              = data.aws_iam_policy_document.kms[0].json
+  tags                = var.tags
 }
 
 resource "aws_kms_alias" "backend" {

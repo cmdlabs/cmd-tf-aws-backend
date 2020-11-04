@@ -54,6 +54,14 @@ Type: `bool`
 
 Default: `false`
 
+### enable\_key\_rotation
+
+Description: Enable kms key rotation if required
+
+Type: `bool`
+
+Default: `false`
+
 ### prevent\_unencrypted\_uploads
 
 Description: Attach a bucket policy that requires all uploaded files to be explicitly encrypted. Must set the encrypted flag on the backend config.
