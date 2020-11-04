@@ -26,6 +26,12 @@ variable "enable_customer_kms_key" {
   default     = false
 }
 
+variable "enable_key_rotation" {
+  type        = bool
+  description = "Enable kms key rotation if required"
+  default     = false
+}
+
 variable "tags" {
   type        = map(string)
   description = "Tags applied to all resources"
