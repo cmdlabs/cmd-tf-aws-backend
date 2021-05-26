@@ -19,7 +19,8 @@ resource "aws_s3_bucket" "backend" {
   policy = var.prevent_unencrypted_uploads ? data.aws_iam_policy_document.prevent_unencrypted_uploads.json : ""
 
   versioning {
-    enabled = true
+    enabled    = true
+    mfa_delete = var.mfa_delete
   }
 
   server_side_encryption_configuration {

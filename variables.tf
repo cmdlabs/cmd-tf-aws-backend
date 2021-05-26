@@ -37,3 +37,9 @@ variable "all_workspaces_details" {
   description = "A list of aws principles that will be allowed to assume the backend-all role"
   default     = []
 }
+
+variable "mfa_delete" {
+  type        = bool
+  description = "Toggle MFA delete"
+  default     = false
+}
