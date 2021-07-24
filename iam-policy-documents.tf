@@ -38,7 +38,7 @@ data "aws_iam_policy_document" "backend_assume_role_restricted" {
 
     principals {
       type        = "AWS"
-      identifiers = "${length(each.value) > 0 ? each.value : tolist([data.aws_caller_identity.current.account_id])}"
+      identifiers = "length(each.value) > 0 ? each.value : tolist([data.aws_caller_identity.current.account_id])"
     }
   }
 }
