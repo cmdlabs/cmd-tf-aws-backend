@@ -8,7 +8,7 @@ data "aws_iam_policy_document" "backend_assume_role_all" {
 
     principals {
       type        = "AWS"
-      identifiers = length(var.all_workspaces_details) > 0 ? var.all_workspaces_details : list(data.aws_caller_identity.current.account_id)
+      identifiers = length(var.all_workspaces_details) > 0 ? var.all_workspaces_details : [data.aws_caller_identity.current.account_id]
     }
   }
 }
@@ -38,7 +38,7 @@ data "aws_iam_policy_document" "backend_assume_role_restricted" {
 
     principals {
       type        = "AWS"
-      identifiers = "${length(each.value) > 0 ? each.value : list(data.aws_caller_identity.current.account_id)}"
+      identifiers = length(each.value) > 0 ? each.value : [data.aws_caller_identity.current.account_id]
     }
   }
 }
