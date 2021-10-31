@@ -11,5 +11,5 @@ output "iam_roles" {
 }
 
 output "kms_key_id"{
-    value = var.enable_customer_kms_key ? aws_kms_key.backend[0].arn: null
+    value = var.enable_customer_kms_key ? aws_kms_key.backend[0].id: null
 }
