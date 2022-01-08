@@ -34,6 +34,16 @@ resource "aws_s3_bucket" "backend" {
   tags = var.tags
 }
 
+# Setting object_ownership="BucketOwnerEnforced" will effectively disable ACL on the bucket
+# default option is to keep it enabled.
+resource "aws_s3_bucket_ownership_controls" "acl_set" {
+  count  = var.disable_acl ? 1 : 0
+  bucket = aws_s3_bucket.backend.id
+  rule {
+    object_ownership = "BucketOwnerEnforced"
+  }
+}
+
 resource "aws_s3_bucket_public_access_block" "backend" {
   bucket = aws_s3_bucket.backend.id
 
