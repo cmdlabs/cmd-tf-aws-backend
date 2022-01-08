@@ -74,3 +74,18 @@ module "tf-backend4" {
     Department = "Bar"
   }
 }
+
+# all default bucket acl disabled
+module "tf-backend2" {
+  source = "../"
+
+  resource_prefix = "backend-ci-test4-${var.resource_suffix}"
+
+  disable_acl = true
+
+  workspace_details = {
+    "prod"    = []
+    "nonprod" = []
+    "sandpit" = []
+  }
+}
