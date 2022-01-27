@@ -26,6 +26,18 @@ variable "enable_customer_kms_key" {
   default     = false
 }
 
+variable "enable_key_rotation" {
+  type        = bool
+  description = "Enable kms key rotation if required"
+  default     = false
+}
+
+variable "force_destroy" {
+  type        = boolean
+  descrption  = "Force removal of non-empty backend s3 buckets"
+  default     = false
+}
+
 variable "tags" {
   type        = map(string)
   description = "Tags applied to all resources"

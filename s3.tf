@@ -31,7 +31,8 @@ resource "aws_s3_bucket" "backend" {
     }
   }
 
-  tags = var.tags
+  force_destroy = var.force_destroy
+  tags          = var.tags
 }
 
 resource "aws_s3_bucket_public_access_block" "backend" {
