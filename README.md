@@ -13,10 +13,9 @@ The policy by default will be set to the current account ID. This is primarily s
 ## Requirements
 
 The following requirements are needed by this module:
+- terraform ( >= 0.12.31)
 
-- terraform ( >= 0.12.26)
-
-- aws (>= 2.8.1)
+- aws (>= 2.70.0)
 
 ## Required Inputs
 
