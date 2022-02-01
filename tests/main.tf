@@ -74,3 +74,22 @@ module "tf-backend4" {
     Department = "Bar"
   }
 }
+
+# force_destroy backend
+module "tf-backend5" {
+  source = "../"
+
+  resource_prefix = "backend-ci-test5-${var.resource_suffix}"
+
+  workspace_details = {
+    "prod"    = []
+    "nonprod" = []
+    "sandpit" = []
+  }
+
+  tags = {
+    Owner      = "Foo"
+    Department = "Bar"
+  }
+  s3_force_destroy = true
+}

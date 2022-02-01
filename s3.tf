@@ -18,6 +18,8 @@ resource "aws_s3_bucket" "backend" {
   acl    = "private"
   policy = var.prevent_unencrypted_uploads ? data.aws_iam_policy_document.prevent_unencrypted_uploads.json : ""
 
+  force_destroy = var.s3_force_destroy
+
   versioning {
     enabled = true
   }

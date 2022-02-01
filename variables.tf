@@ -37,3 +37,9 @@ variable "all_workspaces_details" {
   description = "A list of aws principles that will be allowed to assume the backend-all role"
   default     = []
 }
+
+variable "s3_force_destroy" {
+  type        = bool
+  description = "All objects (including any locked objects) will be deleted from the bucket so that the bucket can be destroyed without error. These objects are not recoverable!"
+  default     = false
+}
